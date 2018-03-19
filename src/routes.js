@@ -5,8 +5,8 @@ import HomePage from './components/home/HomePage';
 import AboutPage from './components/about/AboutPage';
 
 export default(
-    <Route path="/" component={App}>
+    <Router path="/" component={App}>
         <IndexRoute component={HomePage} />
-        <Route path="about" component={AboutPage} />
-    </Route>
+        <Router path="about" component={AboutPage} />
+    </Router>
 );

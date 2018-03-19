@@ -11,3 +11,5 @@ class AboutPage extends React.Component{
         );
     }
 }
+
+export default AboutPage;
