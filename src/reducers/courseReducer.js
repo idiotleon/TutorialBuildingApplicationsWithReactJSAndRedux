@@ -1,3 +1,5 @@
+import * as types from '../actions/actionTypes';
+
 /**
  * Each reducer handles a specific slice of state
  * @param {*} state 
@@ -5,7 +7,7 @@
  */
 export default function courseReducer(state = [], action){
     switch(action.type){
-        case 'CREATE_COURSE':
+        case types.CREATE_COURSE:
             // debugger;
             // representing the existing array. It ends up returning a new state array
             return [...state,
