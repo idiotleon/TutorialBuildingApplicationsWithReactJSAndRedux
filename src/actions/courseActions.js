@@ -1,7 +1,7 @@
 import * as types from './actionTypes';
-import courseApi from './api/mockCourseApi';
+import courseApi from '../api/mockCourseApi';
 
-export function loadCourseSuccess(courses){
+export function loadCoursesSuccess(courses){
     return { type: types.LOAD_COURSE_SUCCESS, courses };
 }
 
@@ -12,5 +12,5 @@ export function loadCourses(){
         }).catch(error => {
             throw(error);
         });
-    }
+    };
 }
