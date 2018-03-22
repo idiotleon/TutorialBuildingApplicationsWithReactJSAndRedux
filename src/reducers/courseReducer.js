@@ -7,13 +7,8 @@ import * as types from '../actions/actionTypes';
  */
 export default function courseReducer(state = [], action){
     switch(action.type){
-        case types.CREATE_COURSE:
-            // debugger;
-            // representing the existing array. It ends up returning a new state array
-            return [...state,
-                // a deep copy of the course passed in
-                Object.assign({}, action.course)
-            ];
+        case types.LOAD_COURSE_SUCCESS:
+            return action.courses;
         
         default:
             return state;
