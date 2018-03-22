@@ -3,105 +3,79 @@ import delay from './delay';
 // This file mocks a web API by working with the hard-coded data below.
 // It uses setTimeout to simulate the delay of an AJAX call.
 // All calls return promises.
-const courses = [
+const authors = [
   {
-    id: "react-flux-building-applications",
-    title: "Building Applications in React and Flux",
-    watchHref: "http://www.pluralsight.com/courses/react-flux-building-applications",
-    authorId: "cory-house",
-    length: "5:08",
-    category: "JavaScript"
+    id: 'cory-house',
+    firstName: 'Cory',
+    lastName: 'House'
   },
   {
-    id: "clean-code",
-    title: "Clean Code: Writing Code for Humans",
-    watchHref: "http://www.pluralsight.com/courses/writing-clean-code-humans",
-    authorId: "cory-house",
-    length: "3:10",
-    category: "Software Practices"
+    id: 'scott-allen',
+    firstName: 'Scott',
+    lastName: 'Allen'
   },
   {
-    id: "architecture",
-    title: "Architecting Applications for the Real World",
-    watchHref: "http://www.pluralsight.com/courses/architecting-applications-dotnet",
-    authorId: "cory-house",
-    length: "2:52",
-    category: "Software Architecture"
-  },
-  {
-    id: "career-reboot-for-developer-mind",
-    title: "Becoming an Outlier: Reprogramming the Developer Mind",
-    watchHref: "http://www.pluralsight.com/courses/career-reboot-for-developer-mind",
-    authorId: "cory-house",
-    length: "2:30",
-    category: "Career"
-  },
-  {
-    id: "web-components-shadow-dom",
-    title: "Web Component Fundamentals",
-    watchHref: "http://www.pluralsight.com/courses/web-components-shadow-dom",
-    authorId: "cory-house",
-    length: "5:10",
-    category: "HTML5"
+    id: 'dan-wahlin',
+    firstName: 'Dan',
+    lastName: 'Wahlin'
   }
 ];
 
-function replaceAll(str, find, replace) {
-  return str.replace(new RegExp(find, 'g'), replace);
-}
-
 //This would be performed on the server in a real app. Just stubbing in.
-const generateId = (course) => {
-  return replaceAll(course.title, ' ', '-');
+const generateId = (author) => {
+  return author.firstName.toLowerCase() + '-' + author.lastName.toLowerCase();
 };
 
-class CourseApi {
-  static getAllCourses() {
+class AuthorApi {
+  static getAllAuthors() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        resolve(Object.assign([], courses));
+        resolve(Object.assign([], authors));
       }, delay);
     });
   }
 
-  static saveCourse(course) {
-    course = Object.assign({}, course); // to avoid manipulating object passed in.
+  static saveAuthor(author) {
+	author = Object.assign({}, author); // to avoid manipulating object passed in.
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         // Simulate server-side validation
-        const minCourseTitleLength = 1;
-        if (course.title.length < minCourseTitleLength) {
-          reject(`Title must be at least ${minCourseTitleLength} characters.`);
+        const minAuthorNameLength = 3;
+        if (author.firstName.length < minAuthorNameLength) {
+          reject(`First Name must be at least ${minAuthorNameLength} characters.`);
         }
 
-        if (course.id) {
-          const existingCourseIndex = courses.findIndex(a => a.id == course.id);
-          courses.splice(existingCourseIndex, 1, course);
+        if (author.lastName.length < minAuthorNameLength) {
+          reject(`Last Name must be at least ${minAuthorNameLength} characters.`);
+        }
+
+        if (author.id) {
+          const existingAuthorIndex = authors.findIndex(a => a.id == author.id);
+          authors.splice(existingAuthorIndex, 1, author);
         } else {
           //Just simulating creation here.
-          //The server would generate ids and watchHref's for new courses in a real app.
+          //The server would generate ids for new authors in a real app.
           //Cloning so copy returned is passed by value rather than by reference.
-          course.id = generateId(course);
-          course.watchHref = `http://www.pluralsight.com/courses/${course.id}`;
-          courses.push(course);
+          author.id = generateId(author);
+          authors.push(author);
         }
 
-        resolve(course);
+        resolve(author);
       }, delay);
     });
   }
 
-  static deleteCourse(courseId) {
+  static deleteAuthor(authorId) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        const indexOfCourseToDelete = courses.findIndex(course => {
-          course.id == courseId;
+        const indexOfAuthorToDelete = authors.findIndex(author => {
+          author.id == authorId;
         });
-        courses.splice(indexOfCourseToDelete, 1);
+        authors.splice(indexOfAuthorToDelete, 1);
         resolve();
       }, delay);
     });
   }
 }
 
-export default CourseApi;
+export default AuthorApi;
