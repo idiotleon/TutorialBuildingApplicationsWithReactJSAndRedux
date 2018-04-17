@@ -1,7 +1,7 @@
-import React, {PropTypes} from 'react';
+import React, { PropTypes } from 'react';
 
-const SelectInput = ({name, label, onChange, defualtOption, value, error, options}) =>{
-    return(
+const SelectInput = ({ name, label, onChange, defualtOption, value, error, options }) => {
+    return (
         <div className="form-group">
             <label htmlFor={name}>{label}</label>
             <div className="field">
@@ -13,10 +13,10 @@ const SelectInput = ({name, label, onChange, defualtOption, value, error, option
                     className="form-control">
                     {options.map((option) => {
                         return <option key={option.value} value={option.value}>{option.text}</option>;
-                        })
+                    })
                     }
-                    </select>
-                    {error && <div className="alert alert-danger">{error}</div>}
+                </select>
+                {error && <div className="alert alert-danger">{error}</div>}
             </div>
         </div>
     );
