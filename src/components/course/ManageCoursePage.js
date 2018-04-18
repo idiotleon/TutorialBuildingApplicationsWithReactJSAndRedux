@@ -4,12 +4,22 @@ import { bindActionCreators } from 'redux';
 import * as courseActions from '../../actions/courseActions';
 import CourseForm from './CourseForm';
 
+/**
+ * This is a container component
+ */
 class ManageCoursePage extends React.Component {
     constructor(props, context) {
         super(props, context);
-
         this.state = {
-            course: Object.assign({}, this.props.course),
+            /*
+            *   "course" could also have called this initialCourse for clarity, since
+            *   the prop is just for initializing state
+            * 
+            *   "this"[keyword] is recommended to be omitted 
+            *   since passed on contructor: (this.)props.course
+            */
+            course: Object.assign({}, props.course),
+            // Tracking errors in the state would be useful
             errors: {}
         };
     }
@@ -17,7 +27,6 @@ class ManageCoursePage extends React.Component {
     render() {
         return (
             <div>
-                <h1>Manage Course</h1>
                 <CourseForm
                     allAuthors={[]}
                     course={this.state.course}
