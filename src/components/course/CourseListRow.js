@@ -1,8 +1,8 @@
-import React, {PropTypes} from 'react';
-import {Link} from 'react-router';
+import React, { PropTypes } from 'react';
+import { Link } from 'react-router';
 
-const CourseListRow = ({course}) => {
-    return(
+const CourseListRow = ({ course }) => {
+    return (
         <tr>
             <td><a href={course.watchHref} target="_black">Watch</a></td>
             <td><Link to={'/course/' + course.id}>{course.title}</Link></td>

@@ -3,51 +3,51 @@ import TextInput from '../common/TextInput';
 import SelectInput from '../common/SelectInput';
 
 // a stateless component
-const CourseForm = ({course, allAuthors, onSave, onChange, loading, errors}) => {
-    return(
+const CourseForm = ({ course, allAuthors, onSave, onChange, loading, errors }) => {
+    return (
         <form>
             <h1>Manage Course</h1>
-            <TextInput 
-                name="title" 
-                label="Title" 
+            <TextInput
+                name="title"
+                label="Title"
                 value={course.title}
                 onChange={onChange}
-                error={error.title}/>
+                error={errors.title} />
 
             <SelectInput
                 name="authorId"
                 label="Author"
                 value={course.authorId}
                 defaultOption="Select Author"
-                options={allauthors}
+                options={allAuthors}
                 onChange={onChange}
-                error={errors.authorId}/>
+                error={errors.authorId} />
 
             <TextInput
                 name="category"
                 label="Category"
                 value={course.category}
                 onChange={onChange}
-                error={errors.category}/>
+                error={errors.category} />
 
             <TextInput
                 name="length"
                 label="Length"
                 value={course.length}
                 onChange={onChange}
-                error={errors.length}/>
+                error={errors.length} />
 
             <input
                 type="submit"
                 disabled={loading}
-                value={loading? 'Saving...' : 'Save'}
+                value={loading ? 'Saving...' : 'Save'}
                 className="btn btn-primary"
-                onClick={onSave}/>
+                onClick={onSave} />
         </form>
     );
 };
 
-CourseForm.prototype = {
+CourseForm.propTypes = {
     course: React.PropTypes.object.isRequired,
     allAuthors: React.PropTypes.array,
     onSave: React.PropTypes.func.isRequired,
