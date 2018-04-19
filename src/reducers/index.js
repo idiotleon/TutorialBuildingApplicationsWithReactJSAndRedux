@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import courses from './courseReducer';
 import authors from './authorReducer';
+import ajaxCallsInProgress from './ajaxStatusReducer';
 
 /**
  * Root reducer
@@ -8,7 +9,8 @@ import authors from './authorReducer';
 const rootReducer = combineReducers({
     // ES6 shorthand property name
     courses,
-    authors
+    authors,
+    ajaxCallsInProgress
 });
 
 export default rootReducer;
