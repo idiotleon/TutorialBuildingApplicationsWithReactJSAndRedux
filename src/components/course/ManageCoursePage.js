@@ -23,6 +23,17 @@ class ManageCoursePage extends React.Component {
             // Tracking errors in the state would be useful
             errors: {}
         };
+
+        this.updateCourseState = this.updateCourseState.bind(this);
+    }
+
+    updateCourseState(event) {
+        const field = event.target.name;
+        // To avoid mutating state
+        // Do NOT: let course = this.state.course;
+        let course = Object.assign({}, this.state.course);
+        course[field] = event.target.value;
+        return this.setState({ course: course });
     }
 
     render() {
@@ -30,6 +41,7 @@ class ManageCoursePage extends React.Component {
             <div>
                 <CourseForm
                     allAuthors={this.props.authors}
+                    onChange={this.updateCourseState}
                     course={this.state.course}
                     errors={this.state.errors}
                 />
