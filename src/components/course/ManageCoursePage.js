@@ -20,7 +20,6 @@ class ManageCoursePage extends React.Component {
             *   since passed on contructor: (this.)props.course
             */
             course: Object.assign({}, props.course),
-            authors: Object.assign({}, props.authors),
             // Tracking errors in the state would be useful
             errors: {}
         };
