@@ -10,7 +10,7 @@ function setup(saving) {
     const props = {
         course: {},
         saving: saving,
-        error: {},
+        errors: {},
         onSave: () => { },
         onChange: () => { }
     };

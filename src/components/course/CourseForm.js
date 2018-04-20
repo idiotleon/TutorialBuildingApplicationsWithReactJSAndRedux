@@ -3,7 +3,7 @@ import TextInput from '../common/TextInput';
 import SelectInput from '../common/SelectInput';
 
 // a stateless component
-const CourseForm = ({ course, allAuthors, onSave, onChange, saving, error }) => {
+const CourseForm = ({ course, allAuthors, onSave, onChange, saving, errors }) => {
     return (
         <form>
             <h1>Manage Course</h1>
@@ -12,7 +12,7 @@ const CourseForm = ({ course, allAuthors, onSave, onChange, saving, error }) => 
                 label="Title"
                 value={course.title}
                 onChange={onChange}
-                error={error.title} />
+                errors={errors.title} />
 
             <SelectInput
                 name="authorId"
@@ -21,21 +21,21 @@ const CourseForm = ({ course, allAuthors, onSave, onChange, saving, error }) => 
                 defaultOption="Select Author"
                 options={allAuthors}
                 onChange={onChange}
-                error={error.authorId} />
+                errors={errors.authorId} />
 
             <TextInput
                 name="category"
                 label="Category"
                 value={course.category}
                 onChange={onChange}
-                error={error.category} />
+                errors={errors.category} />
 
             <TextInput
                 name="length"
                 label="Length"
                 value={course.length}
                 onChange={onChange}
-                error={error.length} />
+                errors={errors.length} />
 
             <input
                 type="submit"

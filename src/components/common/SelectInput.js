@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-const SelectInput = ({ name, label, onChange, defaultOption, value, error, options }) => {
+const SelectInput = ({ name, label, onChange, defaultOption, value, errors, options }) => {
     return (
         <div className="form-group">
             <label htmlFor={name}>{label}</label>
@@ -17,7 +17,7 @@ const SelectInput = ({ name, label, onChange, defaultOption, value, error, optio
                     })
                     }
                 </select>
-                {error && <div className="alert alert-danger">{error}</div>}
+                {errors && <div className="alert alert-danger">{errors}</div>}
             </div>
         </div>
     );
@@ -29,7 +29,7 @@ SelectInput.propTypes = {
     onChange: PropTypes.func.isRequired,
     defaultOption: PropTypes.string,
     value: PropTypes.string,
-    error: PropTypes.string,
+    errors: PropTypes.string,
     options: PropTypes.arrayOf(PropTypes.object)
 };
 
