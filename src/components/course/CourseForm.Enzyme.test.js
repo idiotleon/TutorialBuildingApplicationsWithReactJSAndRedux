@@ -28,7 +28,7 @@ describe('CourseForm via Enzyme', () => {
     it('sav button is labeled "Save" when not saving', () => {
         const wrapper = setup(false);
         expect(wrapper.find('input').props().value).toBe('Save');
-    })
+    });
 
     it('save button is labeled "Saving..." when saving', () => {
         const wrapper = setup(true);

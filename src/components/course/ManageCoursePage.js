@@ -5,6 +5,7 @@ import * as courseActions from '../../actions/courseActions';
 import * as authorActions from '../../actions/authorActions';
 import CourseForm from './CourseForm';
 import CourseList from './CourseList';
+import { authorsFormattedForDropdown } from '../../selectors/selectors';
 import toastr from 'toastr';
 
 /**
@@ -124,16 +125,9 @@ function mapStateToProps(state, ownProps) {
         course = getCourseById(state.courses, courseId);
     }
 
-    const authorsFormattedForDropdown = state.authors.map(author => {
-        return {
-            value: author.id,
-            text: author.firstName + " " + author.lastName
-        };
-    });
-
     return {
         course: course,
-        authors: authorsFormattedForDropdown
+        authors: authorsFormattedForDropdown(state.authors)
     };
 }
 
