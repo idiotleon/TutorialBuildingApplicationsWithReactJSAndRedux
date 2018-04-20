@@ -5,6 +5,7 @@ import * as courseActions from '../../actions/courseActions';
 import * as authorActions from '../../actions/authorActions';
 import CourseForm from './CourseForm';
 import CourseList from './CourseList';
+import toastr from 'toastr';
 
 /**
  * This is a container component
@@ -55,6 +56,7 @@ class ManageCoursePage extends React.Component {
 
     redirect() {
         this.setState({ saving: false });
+        toastr.success('Course saved');
         this.context.router.push('/courses');
     }
 
